@@ -52,6 +52,7 @@ public class Assignment_1_1_27 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println(binomial(11,7,0.5));
+		System.out.println(myBinomial(11,7,0.5));
 		System.out.println(myBinomial(100,50,0.5));
 	}
 
