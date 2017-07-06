@@ -1,11 +1,12 @@
-package main;
+package main.assignment;
 
 import java.util.Arrays;
 
 import util.In;
 import util.StdIn;
+import util.StdOut;
 
-public class Assignment_1_1_23 {
+public class Assignment_1_1_22 {
 	public static int indexOf(int[] a,int key){
 		return indexOf(a,key,0,a.length-1,0);
 	}
@@ -58,14 +59,7 @@ public class Assignment_1_1_23 {
         while (!StdIn.isEmpty()) {
             int key = StdIn.readInt();
             int result = indexOf(whitelist,key);
-            if(result==-1){
-            	s = s+"+ "+key+"  ";
-            	System.out.println(s);
-            	continue;
-            }
-        	s = s+"- "+key+"  ";
-        	System.out.println(s);
+            System.out.println("key: "+key+" index: "+result);
         }
     }
 }
-

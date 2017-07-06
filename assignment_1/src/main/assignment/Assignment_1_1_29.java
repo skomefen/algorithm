@@ -22,7 +22,7 @@
  *  [367,966 total values]
  *  
  ******************************************************************************/
-package main;
+package main.assignment;
 
 import java.util.Arrays;
 
@@ -42,12 +42,12 @@ import util.StdOut;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class Assignment_1_1_28 {
+public class Assignment_1_1_29 {
 
     /**
      * This class should not be instantiated.
      */
-    private Assignment_1_1_28() { }
+    private Assignment_1_1_29() { }
 
     /**
      * Returns the index of the specified key in the specified array.
@@ -69,41 +69,36 @@ public class Assignment_1_1_28 {
         return -1;
     }
 
-    /**
-     * Returns the index of the specified key in the specified array.
-     * This function is poorly named because it does not give the <em>rank</em>
-     * if the array has duplicate keys or if the key is not in the array.
-     *
-     * @param  key the search key
-     * @param  a the array of integers, must be sorted in ascending order
-     * @return index of key in array {@code a} if present; {@code -1} otherwise
-     * @deprecated Replaced by {@link #indexOf(int[], int)}.
-     */
-    @Deprecated
     public static int rank(int key, int[] a) {
-        return indexOf(a, key);
+        int index = indexOf(a, key);
+        int temp = index-1;
+        if(temp<=0){
+        	return 0;
+        }
+        while(temp>=0&&a[temp]==a[index]){
+        	temp--;
+        }
+        return ++temp;
     }
 
-    private static int[] removeRepeatElement(int[] whitelist) {
-		int length = whitelist.length;
-		   int[] templist = new int[length];
-		   int index = 0;
-		   for(int i = 0;i<length;i++){
-			   boolean flag = true;
-			   int temp = whitelist[i];
-			   for(int j = i+1;j<length;j++){
-				   if(temp == whitelist[j])
-					  flag = false;
-			   }
-			   if(flag==true){
-				   templist[index] = temp;
-		    	   index++;
-			   }
-		   }
-		   int[] newlist = new int[index];
-		   System.arraycopy(templist, 0, newlist, 0, index);
-		return newlist;
-	}
+    public static int count(int key, int[] a){
+    	int index = indexOf(a, key);
+    	int count = 1;
+    	int temp = index-1;
+    	
+    	while(temp>=0&&a[temp]==a[index]){
+    		count++;
+    		temp--;
+    	}
+    	
+    	temp = index+1;
+    	while(temp<a.length&&a[temp]==a[index]){
+    		count++;
+    		temp++;
+    	}
+    	
+    	return count;
+    }
     /**
      * Reads in a sequence of integers from the whitelist file, specified as
      * a command-line argument; reads in integers from standard input;
@@ -111,7 +106,7 @@ public class Assignment_1_1_28 {
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args) {
+   public static void main(String[] args) {
 
         // read the integers from a file
         In in = new In("http://algs4.cs.princeton.edu/11model/tinyT.txt");
@@ -119,16 +114,17 @@ public class Assignment_1_1_28 {
 
         // sort the array
         Arrays.sort(whitelist);
-
-        // read integer key from standard input; print if not in whitelist
-       int[] newlist = removeRepeatElement(whitelist);
-       
-       for(int i : newlist){
-    	   System.out.println(i);
-       }
+        
+        for(int e : whitelist)
+        	System.out.println(e);
+        
+        while(!StdIn.isEmpty()){
+        	int key = StdIn.readInt();
+	        System.out.println(rank(key,whitelist));
+	        System.out.println(count(key, whitelist));
+        }
+        
     }
-
-	
 }
 
 /******************************************************************************

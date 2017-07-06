@@ -1,4 +1,4 @@
-package main;
+package main.assignment;
 
 import java.io.InputStream;
 import java.util.Scanner;

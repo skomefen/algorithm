@@ -1,4 +1,4 @@
-package main;
+package main.assignment;
 
 public class Assignment_1_1_9 {
 	public static String toBinaryString(int n){

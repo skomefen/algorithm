@@ -1,4 +1,4 @@
-package main;
+package main.assignment;
 
 /**
  * 题目改成

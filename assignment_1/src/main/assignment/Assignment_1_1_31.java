@@ -1,4 +1,4 @@
-package main;
+package main.assignment;
 
 import util.StdDraw;
 import util.StdIn;

@@ -1,4 +1,4 @@
-package main;
+package main.assignment;
 
 import com.sun.org.apache.bcel.internal.generic.InstructionFactory;
 
